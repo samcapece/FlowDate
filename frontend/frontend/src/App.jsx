@@ -10,13 +10,13 @@ function App() {
       <main className="main-content">
         <button
           className="login-button"
-          onClick={() => alert('Login clicked!')}
+          onClick={() => console.log('Login clicked!')}
         >
           Login
         </button>
       </main>
-      <footer classname="footer">
-        <p> 2024 Samuel Capece. All rights reserved.</p>
+      <footer className="footer">
+        <p>&copy; 2024 Samuel Capece. All rights reserved.</p>
       </footer>
     </div>
   );
