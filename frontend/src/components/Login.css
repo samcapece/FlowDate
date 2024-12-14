@@ -1,0 +1,27 @@
+.login-page {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .header {
+    margin: 50px 0;
+    color: var(--green);
+  }
+  
+  .login-button {
+    background-color: var(--green);
+    color: var(--background);
+    border: none;
+    padding: 20px 60px;
+    font-size: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: var(--green2);
+  }
+  

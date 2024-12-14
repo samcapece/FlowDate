@@ -1,0 +1,78 @@
+.calendar {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    color: var(--green);
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .calendar-header h2 {
+    margin: 0;
+  }
+  
+  .calendar-header button {
+    background-color: var(--green);
+    color: var(--background);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calendar-header button:hover {
+    background-color: var(--green2);
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for weekdays */
+    margin-bottom: 10px;
+  }
+  
+  .calendar-day-name {
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); /* 7 columns for days */
+    gap: 5px;
+  }
+  
+  .calendar-cell {
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .calendar-cell.filled:hover {
+    background-color: var(--green2);
+    color: var(--background);
+  }
+  
+  .calendar-cell.current-day {
+    background-color: var(--green2);
+    color: var(--background);
+    font-weight: bold;
+  }
+  
+  .calendar-cell.empty {
+    background-color: transparent;
+    border: none;
+  }
+  
