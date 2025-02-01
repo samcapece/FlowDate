@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Calendar.css'; // Import the calendar stylesheet
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 function Calendar() {
   const [currentDate, setCurrentDate] = useState(new Date()); // Tracks the current month/year
 
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
   // Get the current year and month
   const year = currentDate.getFullYear();
@@ -36,11 +38,13 @@ function Calendar() {
     <div className="calendar">
       {/* Calendar Header */}
       <div className="calendar-header">
-        <button onClick={goToPreviousMonth}>&lt; Prev</button>
+        <button onClick={goToPreviousMonth}>
+          <FontAwesomeIcon icon = {faArrowLeft} /> </button>
         <h2>
           {currentDate.toLocaleString('default', { month: 'long' })} {year}
         </h2>
-        <button onClick={goToNextMonth}>Next &gt;</button>
+        <button onClick={goToNextMonth}> 
+        <FontAwesomeIcon icon = {faArrowRight} /> </button>
       </div>
 
       {/* Days of the Week */}

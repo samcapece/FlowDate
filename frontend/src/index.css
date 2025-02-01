@@ -5,7 +5,9 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", serif;
+  font-weight: 100;
+  font-style: normal;
   margin: 0;
   height: 100%;
   padding: 0;
@@ -25,12 +27,13 @@ body {
 }
 
 .header {
-  margin: 50px 0;
-  padding: 20px;
+  margin: auto;
+  padding: 15px;
 }
 
 .header h1 {
-  font-size: 15rem;
+  font-size: 12rem;
+  margin: 20px;
   color: var(--green);
   animation: fadeIn 1.5s ease-in-out;
 }
@@ -38,10 +41,8 @@ body {
 .login-button {
   background-color: var(--green);
   color: #414141;
-  border: none;
   padding: 20px 60px;
   font-size: 1.5rem;
-  border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

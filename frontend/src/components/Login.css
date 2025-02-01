@@ -6,11 +6,12 @@
   }
   
   .header {
-    margin: 50px 0;
+    margin: auto;
     color: var(--green);
   }
   
   .login-button {
+    margin: 50px;
     background-color: var(--green);
     color: var(--background);
     border: none;
