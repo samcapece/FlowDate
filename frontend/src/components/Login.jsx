@@ -21,7 +21,7 @@ function Login() {
         </button>
       </main>
       <footer className="footer">
-        <p>&copy; 2024 Samuel Capece. All rights reserved.</p>
+        <p>&copy; 2025 Samuel Capece. All rights reserved.</p>
       </footer>
     </div>
   );

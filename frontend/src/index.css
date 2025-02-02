@@ -2,6 +2,7 @@
   --background: #414141;
   --green: #60fd7c;
   --green2: #1aff44;
+  --background2: rgb(55, 55, 55);
 }
 
 body {
@@ -57,6 +58,7 @@ body {
   font-size: 1rem;
   background-color: #333;
   color: #ccc;
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {

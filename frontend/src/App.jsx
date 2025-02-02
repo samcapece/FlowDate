@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './components/Login'; // Import Login component
 import Calendar from './components/Calendar'; // Import Calendar component
+import DayView from './components/DayView';
 import './index.css'; // Global styles
 
 function HomePage() {
@@ -22,7 +23,7 @@ function HomePage() {
         </button>
       </main>
       <footer className="footer">
-        <p>&copy; 2024 Samuel Capece. All rights reserved.</p>
+        <p>&copy; 2025 Samuel Capece. All rights reserved.</p>
       </footer>
     </div>
   );
@@ -35,6 +36,7 @@ function App() {
         <Route path="/" element={<HomePage />} /> {/* Home Page */}
         <Route path="/login" element={<Login />} /> {/* Login Page */}
         <Route path="/calendar" element={<Calendar />} /> {/* Calendar Page */}
+        <Route path="/day/:month/:day" element={<DayView />} /> {/* Dynamic day route */}
       </Routes>
     </Router>
   );
