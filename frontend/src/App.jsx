@@ -36,7 +36,7 @@ function App() {
         <Route path="/" element={<HomePage />} /> {/* Home Page */}
         <Route path="/login" element={<Login />} /> {/* Login Page */}
         <Route path="/calendar" element={<Calendar />} /> {/* Calendar Page */}
-        <Route path="/day/:month/:day" element={<DayView />} /> {/* Dynamic day route */}
+        <Route path="/day/:year/:month/:day" element={<DayView />} /> {/* Dynamic day route */}
       </Routes>
     </Router>
   );

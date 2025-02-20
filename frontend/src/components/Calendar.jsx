@@ -38,7 +38,7 @@ function Calendar() {
 
   const handleDayClick = (day) => {
     if (day) {
-      navigate(`/day/${month+1}/${day}`); // Navigate to the Day View page
+      navigate(`/day/${year}/${month+1}/${day}`); // Navigate to the Day View page
 
     }
   };

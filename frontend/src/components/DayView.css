@@ -37,6 +37,64 @@
     opacity: 0;
     animation: slideInLeft 0.5s ease-in-out forwards;
   }
+
+  .task-input {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .task-input input {
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1rem;
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: transparent;
+    color: var(--green);
+  }
+
+  .task-input button {
+    background-color: var(--background2);
+    border: none;
+    padding: 5px;
+    color: var(--green);
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 5px;
+  }
+
+  /* Task List */
+  .task-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .task-list li {
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border-bottom: 1px solid var(--green);
+    color: var(--green);
+  }
+
+  .delete-task {
+    background: none;
+    border: none;
+    color: red;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .delete-task:hover {
+    color: darkred;
+  }
+
   
   /* Right side journal panel */
   .journal-panel {
@@ -50,6 +108,10 @@
   }
   
   .journal-panel textarea {
+    font-family: "Poppins", serif;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 1rem;
     margin-left: 15px;
     width: 90%;
     height: 350px;
