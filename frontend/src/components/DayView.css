@@ -71,6 +71,14 @@
   .task-list {
     list-style: none;
     padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--green) var(--background2);
+  }
+
+  .task-list::-webkit-scrollbar {
+    width: 6px;
   }
 
   .task-list li {
@@ -78,21 +86,37 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 8px;
-    border-bottom: 1px solid var(--green);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    background: var(--background);
+    border-radius: 5px;
     color: var(--green);
+    cursor: pointer;
+    margin-bottom: 8px;
+  }
+
+  .completed-task {
+    opacity: 0.4;
+  }
+
+  /* Highlight task on hover */
+  .task-list li:hover {
+    background-color: rgb(104, 104, 104);
+    opacity: 0.8;
   }
 
   .delete-task {
     background: none;
     border: none;
-    color: red;
-    font-size: 1rem;
+    color: var(--green);
+    font-size: 2rem;
     cursor: pointer;
   }
 
   .delete-task:hover {
-    color: darkred;
+    color: var(--green2);
   }
 
   
@@ -120,7 +144,26 @@
     color: var(--green);
     padding: 10px;
     border-radius: 5px;
+    resize: none; /* Prevents manual resizing */
+    overflow-y: auto; /* Enables scrolling */
+    scrollbar-width: thin;
+    scrollbar-color: var(--green) var(--background2);
+    outline: none; /* Removes default focus outline */
   }
+
+  /* Scrollbar for WebKit Browsers (Chrome, Edge, Safari) */
+  .journal-panel textarea::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .journal-panel textarea::-webkit-scrollbar-thumb {
+    background-color: var(--green);
+    border-radius: 10px;
+  }
+
+  .journal-panel textarea::-webkit-scrollbar-track {
+    background: var(--background2);
+ }
   
   /* Animations */
   @keyframes slideInLeft {

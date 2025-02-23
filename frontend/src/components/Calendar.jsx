@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Calendar.css'; // Import the calendar stylesheet
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
@@ -43,6 +43,48 @@ function Calendar() {
     }
   };
 
+  const [taskStatus, setTaskStatus] = useState({});
+  const [taskCompletionRatio, setTaskCompletionRatio] = useState({});
+
+  useEffect(() => {
+    const updatedStatus = {};
+    const updatedRatio = {};
+
+    for (let day = 1; day <= lastDateOfMonth; day++) {
+      const taskKey = `tasks-${year}-${month + 1}-${day}`;
+      const savedTasks = JSON.parse(localStorage.getItem(taskKey)) || [];
+
+      if (savedTasks.length === 0) {
+        updatedStatus[day] = null;
+        updatedRatio[day] = 0;
+      } else {
+        const completedTasks = savedTasks.filter((task) => task.completed).length;
+        const totalTasks = savedTasks.length;
+        const incompleteTasks = totalTasks - completedTasks;
+
+        updatedRatio[day] = completedTasks / totalTasks;
+
+        if (totalTasks > 5) {
+          updatedStatus[day] = "progress-bar"; // Use progress bar
+        } else {
+          updatedStatus[day] = savedTasks.map((task) => {
+            const taskDate = new Date(year, month, day);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            taskDate.setHours(0, 0, 0, 0);
+          
+            if (task.completed) return "green"; // ✅ Task is completed
+            if (taskDate >= today) return "yellow"; // 🟡 Today or future dates (incomplete)
+            return "red"; // 🔴 Past-due and incomplete
+          });
+        }
+      }
+    }
+
+    setTaskStatus(updatedStatus);
+    setTaskCompletionRatio(updatedRatio);
+  }, [month, year]);
+
   return (
     <div className="calendar-wrapper">
       <div className="calendar">
@@ -71,19 +113,48 @@ function Calendar() {
         {/* Calendar Grid */}
         <div className="calendar-grid">
           {days.map((day, index) => (
+
             <div
-              key={index}
-              className={`calendar-cell ${day ? 'filled' : 'empty'} ${
-                day === new Date().getDate() &&
-                month === new Date().getMonth() &&
-                year === new Date().getFullYear()
-                  ? 'current-day'
-                  : ''
-              }`}
-              onClick={() => day && handleDayClick(day)}
-            >
-              {day}
-            </div>
+            key={index}
+            className={`calendar-cell ${day ? 'filled' : 'empty'} ${
+              day === new Date().getDate() &&
+              month === new Date().getMonth() &&
+              year === new Date().getFullYear()
+                ? 'current-day'
+                : ''
+            }`}
+            onClick={() => day && handleDayClick(day)}
+          >
+            {/* Wrap day number inside a div to force separation */}
+            <div className="day-number">{day}</div>
+          
+            {/* Dots for tasks if there are 5 or fewer */}
+            {taskStatus[day] && taskStatus[day].length <= 5 && (
+              <div className="task-dots-wrapper">
+                {taskStatus[day].map((status, i) => (
+                  <span key={i} className={`task-dot ${status}`}></span>
+                ))}
+              </div>
+            )}
+          
+            {/* Progress Bar if more than 5 tasks */}
+            {taskStatus[day] && taskStatus[day].length > 5 && (
+              <div className="task-progress-bar"
+              style={{
+                background: new Date(year, month, day) >= new Date() ? "var(--yellow)" : "var(--red)", // Yellow if today/future, Red if past
+              }}
+              >
+                <div
+                  className="task-progress-fill"
+                  style={{
+                    width: `${(taskCompletionRatio[day] || 0) * 100}%`,
+                    background: "var(--green2)",
+                  }}
+                ></div>
+              </div>
+            )}
+          </div>
+
           ))}
         </div>
       </div>
